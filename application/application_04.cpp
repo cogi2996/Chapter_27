@@ -1,5 +1,5 @@
+// ap dung cua binary method
 //find fibonaci k st
-//https://cp-algorithms.com/algebra/fibonacci-numbers.html#matrix-form
 #include<bits/stdc++.h>
 using namespace std;
 
