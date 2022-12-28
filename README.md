@@ -1,4 +1,4 @@
-# CTDL_Lop08_Nhom02
+# CTDL_Lop08_Nhom26
 - Dự án môn cấu trúc dữ liệu, được thực hiện bởi nhóm có các sinh viên sau:
   + Trương Nguyễn Thuỳ Trang - 21110691,
   + Lại Trọng Minh Trường - 21110934,
