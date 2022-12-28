@@ -1,4 +1,4 @@
-// Knuth's power tree Applications
+// ung dung cua tree method
 // find max min
 #include <iostream>
 #include <cmath>
