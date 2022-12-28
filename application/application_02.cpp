@@ -1,4 +1,4 @@
-// ứng dụng của tree method
+// ung dung cua tree method
 //Expression Tree
 #include <stdio.h>
 #include <stdlib.h>
