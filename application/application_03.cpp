@@ -1,3 +1,4 @@
+// ung dung cua binary method
 //Applying a permutation k times
 #include <iostream>
 #include <vector>
