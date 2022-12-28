@@ -1,4 +1,4 @@
-/* 
+/* ứng dụng của pp binary method
  * C++ Program to Implement Modular Exponentiation Algorithm
  */
 // MODULOR Y^N MOD M
