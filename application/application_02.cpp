@@ -1,97 +1,85 @@
-//https://www.geeksforgeeks.org/expression-tree/
-// C++ program for expression tree
-#include <bits/stdc++.h>
-using namespace std;
-class node {
-public:
-    char value;
-    node* left;
-    node* right;
-    node* next = NULL;
-    node(char c)
-    {
-        this->value = c;
-        left = NULL;
-        right = NULL;
-    }
-    node()
-    {
-        left = NULL;
-        right = NULL;
-    }
-    friend class Stack;
-    friend class expression_tree;
+//Expression Tree
+#include <stdio.h>
+#include <stdlib.h>
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child */
+struct node {
+    char data;
+    struct node* left;
+    struct node* right;
+    struct node* next;
 };
-class Stack {
-    node* head = NULL;
- 
-public:
-    void push(node*);
-    node* pop();
-    friend class expression_tree;
-};
-class expression_tree {
-public:
-    void inorder(node* x)
-    {
-        // cout<<"Tree in InOrder Traversal is: "<<endl;
-        if (x == NULL)
-            return;
-        else {
-            inorder(x->left);
-            cout << x->value << "  ";
-            inorder(x->right);
-        }
-    }
-};
- 
-void Stack::push(node* x)
+ struct node *head=NULL;
+/* Helper function that allocates a new node with the
+   given data and NULL left and right pointers. */
+struct node* newNode(char data)
 {
-    if (head == NULL) {
-        head = x;
-    }
-    // We are inserting here nodes at the top of the stack [following LIFO principle]
-    else {
-        x->next = head;
-        head = x;
+    struct node* node
+        = (struct node*)malloc(sizeof(struct node));
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    node->next = NULL;
+     
+    return (node);
+}
+void printInorder(struct node* node)
+{
+    if (node == NULL)
+        return;
+    else{
+    /* first recur on left child */
+    printInorder(node->left);
+ 
+    /* then print the data of node */
+    printf("%c ", node->data);
+ 
+    /* now recur on right child */
+    printInorder(node->right);
     }
 }
-node* Stack::pop()
+ 
+void push(struct node* x)
 {
-    // Popping out the top most[ pointed with head] element
-    node* p = head;
+    if(head==NULL)
+    head = x;
+    else
+    {
+        (x)->next = head;
+        head  = x;
+    }
+}
+struct node* pop()
+{
+    // Popping out the top most[pointed with head] element
+    struct node* p = head;
     head = head->next;
     return p;
 }
 int main()
 {
-    string s = "AB+D*C/";
-    // If you  wish take input from user:
-    //cout << "Insert Postorder Expression: " << endl;
-    //cin >> s;
-    Stack e;
-    expression_tree a;
-    node *x, *y, *z;
-    int l = s.length();
+    char s[] = {'A','B','C','*','+','D','/'};
+    int l = sizeof(s) / sizeof(s[0]) ;
+    struct node *x, *y, *z;
     for (int i = 0; i < l; i++) {
         // if read character is operator then popping two
         // other elements from stack and making a binary
         // tree
         if (s[i] == '+' || s[i] == '-' || s[i] == '*'
             || s[i] == '/' || s[i] == '^') {
-            z = new node(s[i]);
-            x = e.pop();
-            y = e.pop();
+            z = newNode(s[i]);
+            x = pop();
+            y = pop();
             z->left = y;
             z->right = x;
-            e.push(z);
+            push(z);
         }
         else {
-            z = new node(s[i]);
-            e.push(z);
+            z = newNode(s[i]);
+            push(z);
         }
     }
-    cout << " The Inorder Traversal of Expression Tree: ";
-    a.inorder(z);
+    printf(" The Inorder Traversal of Expression Tree: ");
+    printInorder(z);
     return 0;
 }
