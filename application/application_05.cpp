@@ -1,5 +1,5 @@
 // ung dung cua tree method
-// find max min
+// tim max min day so
 #include <iostream>
 #include <cmath>
 using namespace std;
